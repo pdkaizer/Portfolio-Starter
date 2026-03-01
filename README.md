@@ -1,5 +1,5 @@
 # Portfolio Starter
-### Capstone Activity — From Figma to Code
+### Capstone Activity — [From Figma to Code](https://designercodelearning.com)
 
 A starter kit for building your portfolio from scratch using semantic HTML and modern CSS. No frameworks, no build tools, no package.json. Open the file, start editing.
 
