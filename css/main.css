@@ -1,0 +1,23 @@
+/* ============================================================
+   main.css — The single CSS entry point
+   Import this file from index.html. Nothing else.
+
+   Cascade Layer order is declared here first so that
+   specificity is explicit and predictable, regardless
+   of file load order.
+   ============================================================ */
+
+@layer reset, tokens, base, components, utilities;
+
+/* — Layers — */
+@import url("layers/reset.css")     layer(reset);
+@import url("layers/tokens.css")    layer(tokens);
+@import url("layers/base.css")      layer(base);
+@import url("layers/utilities.css") layer(utilities);
+
+/* — Components — */
+@import url("components/nav.css")   layer(components);
+@import url("components/hero.css")  layer(components);
+@import url("components/card.css")  layer(components);
+@import url("components/button.css") layer(components);
+@import url("components/footer.css") layer(components);

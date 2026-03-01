@@ -1,0 +1,160 @@
+/* ============================================================
+   button.css — Button Component
+   BEM Block: .btn
+
+   FIGMA ANALOGY:
+     .btn               = Main component
+     .btn--primary      = "Primary" variant
+     .btn--secondary    = "Secondary" variant
+     .btn--ghost        = "Ghost" variant
+     .btn--sm / .btn--lg = Size variants
+     :disabled          = Disabled interactive state
+     :hover             = Hover interactive state
+     :focus-visible     = Focus interactive state (keyboard users)
+   ============================================================ */
+
+/* ── Component tokens ── */
+.btn {
+  --btn-height:        44px;
+  --btn-padding-x:     var(--space-5);
+  --btn-font-size:     var(--text-sm);
+  --btn-font-weight:   var(--weight-medium);
+  --btn-radius:        var(--radius-md);
+  --btn-transition:    var(--duration-fast) var(--ease-default);
+
+  /* Colours — overridden per modifier */
+  --btn-bg:            var(--color-action-primary);
+  --btn-bg-hover:      var(--color-action-primary-hover);
+  --btn-color:         var(--color-action-primary-text);
+  --btn-border-color:  transparent;
+  --btn-shadow:        none;
+}
+
+/* ── Block ── */
+.btn {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-2);
+
+  height:          var(--btn-height);
+  padding-inline:  var(--btn-padding-x);
+
+  font-family:     var(--font-body);
+  font-size:       var(--btn-font-size);
+  font-weight:     var(--btn-font-weight);
+  letter-spacing:  var(--tracking-wide);
+  white-space:     nowrap;
+  line-height:     1;
+
+  color:           var(--btn-color);
+  background-color: var(--btn-bg);
+  border:          var(--border-thin) solid var(--btn-border-color);
+  border-radius:   var(--btn-radius);
+  box-shadow:      var(--btn-shadow);
+
+  text-decoration: none;
+  cursor:          pointer;
+  user-select:     none;
+
+  transition:
+    background-color var(--btn-transition),
+    color var(--btn-transition),
+    border-color var(--btn-transition),
+    box-shadow var(--btn-transition),
+    transform var(--btn-transition);
+}
+
+/* ── States ── */
+
+.btn:hover:not(:disabled) {
+  background-color: var(--btn-bg-hover);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline:        var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity:        0.45;
+  cursor:         not-allowed;
+  pointer-events: none;
+}
+
+
+/* ── Modifiers: Variants ── */
+
+/* Primary — solid brand colour (default) */
+.btn--primary {
+  --btn-bg:       var(--color-action-primary);
+  --btn-bg-hover: var(--color-action-primary-hover);
+  --btn-color:    var(--color-action-primary-text);
+}
+
+/* Secondary — outlined */
+.btn--secondary {
+  --btn-bg:           transparent;
+  --btn-bg-hover:     var(--color-bg-sunken);
+  --btn-color:        var(--color-text-primary);
+  --btn-border-color: var(--color-border-strong);
+}
+
+/* Ghost — no border, subtle hover */
+.btn--ghost {
+  --btn-bg:       transparent;
+  --btn-bg-hover: var(--color-bg-sunken);
+  --btn-color:    var(--color-text-secondary);
+}
+
+.btn--ghost:hover {
+  color: var(--color-text-primary);
+}
+
+/* Danger */
+.btn--danger {
+  --btn-bg:       var(--color-state-error);
+  --btn-bg-hover: var(--color-red-700);
+  --btn-color:    white;
+}
+
+
+/* ── Modifiers: Sizes ── */
+
+.btn--sm {
+  --btn-height:    36px;
+  --btn-padding-x: var(--space-4);
+  --btn-font-size: var(--text-xs);
+}
+
+.btn--lg {
+  --btn-height:    56px;
+  --btn-padding-x: var(--space-8);
+  --btn-font-size: var(--text-lg);
+}
+
+
+/* ── Modifiers: Shape ── */
+
+.btn--pill {
+  --btn-radius: var(--radius-full);
+}
+
+.btn--square {
+  padding-inline: 0;
+  width: var(--btn-height);
+}
+
+/* ── Icon support ── */
+
+.btn svg,
+.btn img {
+  width:  1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+}

@@ -1,0 +1,151 @@
+/* ============================================================
+   utilities.css — Utility classes
+   Applied in the `utilities` layer (highest non-override priority).
+
+   These are single-purpose helper classes for layout and spacing.
+   They intentionally live in the highest layer so they always win
+   without needing !important.
+
+   Philosophy: Use utilities for layout and spacing. Use
+   component classes for visual identity and BEM structure.
+   ============================================================ */
+
+
+/* ── Container ── */
+
+.container {
+  width:        100%;
+  max-width:    var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-inline: var(--space-12);
+  }
+}
+
+/* Container size variants */
+.container--sm  { max-width: var(--container-sm); }
+.container--md  { max-width: var(--container-md); }
+.container--lg  { max-width: var(--container-lg); }
+.container--xl  { max-width: var(--container-xl); }
+
+
+/* ── Stack (vertical rhythm) ── */
+/* Adds consistent vertical spacing between direct children */
+
+.stack > * + * { margin-block-start: var(--space-6); }
+.stack--sm > * + * { margin-block-start: var(--space-4); }
+.stack--lg > * + * { margin-block-start: var(--space-10); }
+.stack--xl > * + * { margin-block-start: var(--space-16); }
+
+
+/* ── Cluster (horizontal wrap group) ── */
+
+.cluster {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         var(--space-4);
+  align-items: center;
+}
+
+.cluster--sm  { gap: var(--space-2); }
+.cluster--lg  { gap: var(--space-6); }
+.cluster--start  { justify-content: flex-start; }
+.cluster--center { justify-content: center; }
+.cluster--end    { justify-content: flex-end; }
+.cluster--apart  { justify-content: space-between; }
+
+
+/* ── Grid layouts ── */
+
+.grid {
+  display: grid;
+  gap:     var(--space-6);
+}
+
+/* Auto-responsive grid — items wrap when below minWidth */
+.grid--auto-sm { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.grid--auto-md { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.grid--auto-lg { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
+
+/* Fixed column grids */
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 640px) {
+  .grid--2,
+  .grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ── Section spacing ── */
+
+.section {
+  padding-block: var(--space-16);
+}
+
+.section--sm { padding-block: var(--space-10); }
+.section--lg { padding-block: var(--space-24); }
+
+
+/* ── Visibility ── */
+
+.visually-hidden {
+  position:   absolute;
+  width:      1px;
+  height:     1px;
+  padding:    0;
+  margin:     -1px;
+  overflow:   hidden;
+  clip:       rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border:     0;
+}
+
+.hide-on-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: revert;
+  }
+}
+
+
+/* ── Text utilities ── */
+
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-left   { text-align: left; }
+
+.text-muted   { color: var(--color-text-secondary); }
+.text-primary { color: var(--color-text-primary); }
+
+.text-sm { font-size: var(--text-sm); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+
+
+/* ── Spacing utilities ── */
+
+.mt-auto { margin-top: auto; }
+.mb-auto { margin-bottom: auto; }
+.mx-auto { margin-inline: auto; }

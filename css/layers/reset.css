@@ -1,0 +1,90 @@
+/* ============================================================
+   reset.css — Modern CSS Reset
+   Applied in the `reset` layer (lowest specificity).
+   Based on Josh Comeau's CSS Reset (joshwcomeau.com/css/custom-css-reset)
+   with additions for modern projects.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  /* Prevent font-size inflation on mobile */
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  /* Smooth scrolling unless the user prefers reduced motion */
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Make media elements behave as block-level */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Avoid text overflow in headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Avoid orphaned words */
+p {
+  overflow-wrap: break-word;
+}
+
+/* Remove default list styles when list role is overridden */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Remove default anchor styles */
+a {
+  color: inherit;
+  text-decoration-skip-ink: auto;
+}

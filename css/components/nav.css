@@ -1,0 +1,181 @@
+/* ============================================================
+   nav.css — Site Navigation Component
+   BEM Block: .nav
+
+   Component tokens (Tier 3) are defined at the top.
+   They reference semantic tokens and can be overridden
+   per-context without changing the component logic.
+   ============================================================ */
+
+/* ── Component tokens ── */
+.nav {
+  --nav-height:        64px;
+  --nav-bg:            var(--color-bg-surface);
+  --nav-border-color:  var(--color-border-subtle);
+  --nav-link-color:    var(--color-text-secondary);
+  --nav-link-hover:    var(--color-text-primary);
+  --nav-link-active:   var(--color-action-primary);
+  --nav-gap:           var(--space-8);
+}
+
+/* ── Block ── */
+.nav {
+  position:   sticky;
+  top:        0;
+  z-index:    100;
+  width:      100%;
+  height:     var(--nav-height);
+  background: var(--nav-bg);
+  border-bottom: var(--border-thin) solid var(--nav-border-color);
+
+  /* Frosted glass effect */
+  backdrop-filter:         blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color:        color-mix(in srgb, var(--nav-bg) 85%, transparent);
+
+  transition:
+    background-color var(--duration-normal) var(--ease-default),
+    border-color var(--duration-normal) var(--ease-default);
+}
+
+/* ── Elements ── */
+
+.nav__inner {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  height:          100%;
+  gap:             var(--space-6);
+}
+
+.nav__logo {
+  font-family:    var(--font-display);
+  font-size:      var(--text-lg);
+  font-weight:    var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color:          var(--color-text-primary);
+  text-decoration: none;
+
+  /* TODO: Replace this text with your name or logo */
+}
+
+.nav__links {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-6);
+  list-style:  none;
+  padding:     0;
+  margin:      0;
+}
+
+.nav__link {
+  font-size:      var(--text-sm);
+  font-weight:    var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color:          var(--nav-link-color);
+  text-decoration: none;
+  transition:     color var(--duration-fast) var(--ease-default);
+
+  /* Animated underline */
+  position:        relative;
+  padding-bottom:  2px;
+}
+
+.nav__link::after {
+  content:          '';
+  position:         absolute;
+  bottom:           0;
+  left:             0;
+  width:            0;
+  height:           var(--border-medium);
+  background-color: var(--nav-link-active);
+  border-radius:    var(--radius-full);
+  transition:       width var(--duration-normal) var(--ease-out);
+}
+
+.nav__link:hover {
+  color: var(--nav-link-hover);
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+/* ── Modifiers ── */
+
+/* Active link (add .nav__link--active to the current page link) */
+.nav__link--active {
+  color: var(--nav-link-active);
+}
+
+.nav__link--active::after {
+  width: 100%;
+}
+
+/* ── Theme toggle button ── */
+/* The toggle switches data-theme on <html> via a small JS snippet in index.html */
+
+.nav__theme-toggle {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           36px;
+  height:          36px;
+  border-radius:   var(--radius-full);
+  border:          var(--border-thin) solid var(--color-border-default);
+  color:           var(--color-text-secondary);
+  transition:
+    background-color var(--duration-fast) var(--ease-default),
+    color var(--duration-fast) var(--ease-default);
+  cursor: pointer;
+}
+
+.nav__theme-toggle:hover {
+  background-color: var(--color-bg-sunken);
+  color:            var(--color-text-primary);
+}
+
+/* ── Mobile nav (hamburger at small sizes) ── */
+
+.nav__mobile-toggle {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .nav__links {
+    display:        none;
+    position:       absolute;
+    top:            var(--nav-height);
+    left:           0;
+    right:          0;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            0;
+    background:     var(--nav-bg);
+    border-bottom:  var(--border-thin) solid var(--nav-border-color);
+    padding:        var(--space-4) 0;
+  }
+
+  .nav__links--open {
+    display: flex;
+  }
+
+  .nav__link {
+    padding: var(--space-3) var(--space-6);
+    width:   100%;
+  }
+
+  .nav__link::after {
+    display: none;
+  }
+
+  .nav__mobile-toggle {
+    display: flex;
+    align-items:     center;
+    justify-content: center;
+    width:  36px;
+    height: 36px;
+    color:  var(--color-text-secondary);
+  }
+}

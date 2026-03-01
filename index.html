@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<!--
+  PORTFOLIO STARTER — Capstone Activity
+  =======================================
+  This is your canvas. Every element here is intentional and
+  corresponds to concepts from the learning path.
+
+  HOW TO USE THIS FILE:
+  • Read the comments — they explain the HTML decisions
+  • Replace all TODO placeholders with your content
+  • Add and remove sections as your portfolio requires
+  • Use DevTools (right-click → Inspect) to experiment live
+
+  STRUCTURE:
+    <head>        — Metadata, fonts, CSS link
+    <body>
+      <nav>       — Sticky navigation (nav.css)
+      <main>
+        <header>  — Hero section (hero.css)
+        <section> — Work / Projects grid (card.css)
+        <section> — About / Bio
+        <section> — Contact
+      </main>
+      <footer>    — Site footer (footer.css)
+-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--
+    SEO & Social Metadata
+    TODO: Fill these in — they control how your portfolio appears
+    in search results and when shared on social media.
+  -->
+  <title>Your Name — Designer</title>
+  <meta name="description" content="TODO: A one-sentence description of you and your work.">
+
+  <!-- Open Graph (controls social media previews) -->
+  <meta property="og:title" content="Your Name — Designer">
+  <meta property="og:description" content="TODO: Your one-sentence description">
+  <meta property="og:image" content="./og-image.png">  <!-- TODO: Add a 1200×630px image -->
+  <meta property="og:type" content="website">
+
+  <!--
+    Fonts
+    TODO: Replace these with your chosen fonts from Google Fonts.
+    Then update --font-display and --font-body in tokens.css.
+    Tip: Choose at most two font families.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!--
+    CSS — Single entry point
+    All CSS is loaded via main.css, which manages the Cascade
+    Layer order and imports every layer and component file.
+  -->
+  <link rel="stylesheet" href="./css/main.css">
+
+  <!--
+    Favicon
+    TODO: Replace with your own favicon.
+  -->
+  <!-- <link rel="icon" type="image/svg+xml" href="./favicon.svg"> -->
+</head>
+<body>
+
+  <!--
+    ── NAVIGATION ────────────────────────────────────────────
+    Semantic element: <nav> — identifies this as a navigation landmark.
+    Screen readers and search engines understand this as site navigation.
+
+    The aria-label distinguishes it from any other <nav> elements
+    on the page (e.g., a footer nav).
+  -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container nav__inner">
+
+      <!-- Your name / logo — links back to top of page -->
+      <a href="/" class="nav__logo">
+        Your Name <!-- TODO: Replace with your name or a logo <img> -->
+      </a>
+
+      <!--
+        Navigation links
+        role="list" is added because some screen readers remove list
+        semantics when list-style: none is applied via CSS.
+      -->
+      <ul class="nav__links" role="list" id="nav-links">
+        <li><a href="#work" class="nav__link">Work</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+        <!-- TODO: Add more links as needed -->
+      </ul>
+
+      <div class="cluster cluster--sm">
+        <!-- Theme toggle button -->
+        <button
+          class="nav__theme-toggle"
+          aria-label="Toggle dark mode"
+          id="theme-toggle"
+        >
+          <!-- Moon icon (shown in light mode) -->
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- Mobile menu toggle -->
+        <button
+          class="nav__mobile-toggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+          id="mobile-toggle"
+        >
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!--
+    ── MAIN CONTENT ──────────────────────────────────────────
+    <main> wraps the primary content of the page.
+    There should only ever be one <main> per page.
+  -->
+  <main>
+
+    <!--
+      ── HERO ────────────────────────────────────────────────
+      Semantic element: <header> inside <main>
+      (This is NOT the page <header> — it's the header of the main
+      content, which is why it lives inside <main>.)
+
+      TODO: This is your first impression. Make it count.
+      Customise hero.css for layout, then edit the content here.
+    -->
+    <header class="hero" id="home">
+      <div class="container">
+        <div class="hero__inner">
+
+          <!-- Eyebrow: your role / tagline -->
+          <p class="hero__eyebrow">
+            TODO: Product Designer · Based in City <!-- Replace this -->
+          </p>
+
+          <!--
+            The <h1> — there should be exactly one per page.
+            This is what search engines and screen readers
+            use as the page title.
+          -->
+          <h1 class="hero__heading">
+            TODO: Designing systems that<br>
+            <em>feel inevitable.</em> <!-- The <em> adds italic emphasis + semantic emphasis -->
+          </h1>
+
+          <p class="hero__subheading">
+            TODO: One or two sentences about who you are, what you do,
+            and the kind of problems you love solving. Keep it human.
+          </p>
+
+          <div class="hero__actions">
+            <!-- Primary CTA -->
+            <a href="#work" class="btn btn--primary btn--lg">
+              View Work
+            </a>
+            <!-- Secondary CTA -->
+            <a href="#contact" class="btn btn--secondary btn--lg">
+              Get in touch
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scroll indicator — decorative, hidden from screen readers -->
+      <div class="hero__scroll" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </header>
+
+
+    <!--
+      ── WORK / PROJECTS ─────────────────────────────────────
+      Semantic element: <section> — a thematic grouping of content.
+      The aria-labelledby ties the section to its heading for
+      screen reader navigation.
+    -->
+    <section class="section" id="work" aria-labelledby="work-heading">
+      <div class="container">
+
+        <div class="stack stack--sm" style="margin-bottom: var(--space-10);">
+          <h2 id="work-heading">Selected Work</h2>
+          <p>
+            TODO: A brief framing sentence — the kinds of projects you
+            take on, or the industries you work across.
+          </p>
+        </div>
+
+        <!--
+          Project cards grid
+          Uses the grid utility for layout, card component for each item.
+          The .grid--auto-md class makes this automatically responsive —
+          no media query needed in your component CSS.
+        -->
+        <div class="grid grid--auto-md">
+
+          <!--
+            PROJECT CARD
+            TODO: Duplicate this block for each project.
+            Replace all placeholder content.
+          -->
+          <article class="card card--featured">
+            <!--
+              <article> is correct here — each project is a
+              self-contained piece of content.
+            -->
+
+            <!-- Card image -->
+            <div class="card__media">
+              <!--
+                Always include alt text that describes what the image shows.
+                If the image is purely decorative, use alt="".
+                TODO: Replace src with your project image.
+              -->
+              <img
+                src="./images/project-01.jpg"
+                alt="TODO: Describe what this project screenshot shows"
+                width="800"
+                height="450"
+                loading="lazy"
+              >
+              <!-- Tags overlaid on image -->
+              <div class="card__tags">
+                <!-- TODO: Uncomment and customise tags
+                <span class="tag">UX Design</span>
+                <span class="tag">Design System</span>
+                -->
+              </div>
+            </div>
+
+            <div class="card__body">
+              <span class="card__category">TODO: Category · Year</span>
+              <h3 class="card__title">TODO: Project Title</h3>
+              <p class="card__description">
+                TODO: 2–3 sentences about the project — the problem,
+                your role, and the outcome. Keep it concise.
+              </p>
+              <footer class="card__footer">
+                <span class="card__meta">TODO: Role</span>
+                <a href="./projects/project-01.html" class="card__link">
+                  View case study
+                </a>
+              </footer>
+            </div>
+          </article>
+
+          <!-- TODO: Duplicate the above <article> block for each project -->
+          <!-- Tip: Aim for 3–5 projects minimum -->
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!--
+      ── ABOUT ───────────────────────────────────────────────
+      TODO: This section is intentionally minimal — design it
+      in your Figma file first, then translate it here.
+    -->
+    <section class="section section--lg" id="about" aria-labelledby="about-heading">
+      <div class="container container--lg">
+
+        <!--
+          TODO: Consider a two-column layout here —
+          photo on one side, text on the other.
+
+          CSS Grid for this would look like:
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-16);
+        -->
+
+        <div class="stack">
+          <h2 id="about-heading">About</h2>
+
+          <p>
+            TODO: A paragraph about your background — where you come
+            from, how you got into design, and what excites you about
+            the work. Write in first person.
+          </p>
+
+          <p>
+            TODO: A second paragraph. This could be about your process,
+            the kinds of teams you like working with, or what you're
+            currently exploring.
+          </p>
+
+          <!--
+            TODO: You might add a list of skills or tools,
+            a link to your CV, or a few personal details here.
+          -->
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!--
+      ── CONTACT ─────────────────────────────────────────────
+    -->
+    <section class="section" id="contact" aria-labelledby="contact-heading">
+      <div class="container container--md">
+        <div class="stack text-center" style="align-items: center;">
+
+          <h2 id="contact-heading">Let's work together.</h2>
+
+          <p>
+            TODO: A short, warm invite to reach out. What kind of work
+            are you looking for? What's the best way to contact you?
+          </p>
+
+          <!--
+            mailto: links open the user's email client.
+            For a more robust contact form, look into Formspree or Netlify Forms.
+            TODO: Replace with your email address.
+          -->
+          <a href="mailto:hello@yourname.com" class="btn btn--primary btn--lg">
+            Say hello →
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!--
+    ── FOOTER ──────────────────────────────────────────────
+    Semantic element: <footer> — site-wide footer.
+    The <small> element denotes side comments like copyright.
+  -->
+  <footer class="footer">
+    <div class="container footer__inner">
+
+      <span class="footer__name">Your Name</span> <!-- TODO -->
+
+      <nav aria-label="Footer navigation">
+        <ul class="footer__links" role="list">
+          <li><a href="#work" class="footer__link">Work</a></li>
+          <li><a href="#about" class="footer__link">About</a></li>
+          <li>
+            <!-- TODO: Add your LinkedIn / Dribbble / GitHub etc. -->
+            <a href="https://linkedin.com/in/yourname" class="footer__link" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <p class="footer__colophon">
+        <small>&copy; <span id="current-year"></span> Your Name</small>
+      </p>
+
+    </div>
+  </footer>
+
+
+  <!--
+    ── JAVASCRIPT ──────────────────────────────────────────
+    Kept intentionally small. CSS does the heavy lifting.
+    This handles: theme toggling, mobile nav, and the current year.
+  -->
+  <script>
+    // ── Theme toggle ──────────────────────────────────────
+    // Reads and writes the data-theme attribute on <html>.
+    // CSS tokens.css switches between light/dark based on this.
+    // Figma equivalent: switching Variable Modes.
+
+    const html         = document.documentElement;
+    const themeToggle  = document.getElementById('theme-toggle');
+    const THEME_KEY    = 'portfolio-theme';
+
+    // Restore saved theme preference
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme) {
+      html.setAttribute('data-theme', savedTheme);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme') || 'light';
+      const next    = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem(THEME_KEY, next);
+
+      // Update button icon (moon ↔ sun)
+      themeToggle.innerHTML = next === 'dark'
+        ? `<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+             <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
+             <line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+             <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/>
+             <line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+           </svg>`
+        : `<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+           </svg>`;
+    });
+
+    // ── Mobile navigation toggle ──────────────────────────
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navLinks     = document.getElementById('nav-links');
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('nav__links--open');
+      mobileToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile nav when a link is clicked
+    navLinks.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('nav__links--open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ── Active nav link on scroll ─────────────────────────
+    // Highlights the nav link for the section currently in view.
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navAnchors = document.querySelectorAll('.nav__link');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(link => {
+            link.classList.toggle(
+              'nav__link--active',
+              link.getAttribute('href') === `#${entry.target.id}`
+            );
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // ── Current year in footer ────────────────────────────
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

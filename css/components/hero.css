@@ -1,0 +1,176 @@
+/* ============================================================
+   hero.css — Hero / Above-the-fold Component
+   BEM Block: .hero
+
+   TODO: This is where you make your biggest impression.
+   Customise the layout, typography size, and background
+   treatment to match your Figma design.
+   ============================================================ */
+
+/* ── Component tokens ── */
+.hero {
+  --hero-min-height:  90svh;
+  --hero-bg:          var(--color-bg-page);
+  --hero-text-align:  left;         /* TODO: Change to center or right */
+  --hero-content-max: 680px;
+}
+
+/* ── Block ── */
+.hero {
+  position:       relative;
+  min-height:     var(--hero-min-height);
+  display:        flex;
+  flex-direction: column;
+  justify-content: center;
+  background:     var(--hero-bg);
+  overflow:       hidden;
+
+  /* Large section padding */
+  padding-block: var(--space-24);
+}
+
+/* ── Elements ── */
+
+.hero__inner {
+  display:     flex;
+  flex-direction: column;
+  gap:         var(--space-6);
+  text-align:  var(--hero-text-align);
+  max-width:   var(--hero-content-max);
+  position:    relative;
+  z-index:     1;
+
+  /* TODO: Remove or change alignment based on your design */
+}
+
+.hero__eyebrow {
+  font-family:    var(--font-mono);
+  font-size:      var(--text-sm);
+  font-weight:    var(--weight-regular);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color:          var(--color-action-primary);
+
+  /* Animate in on load */
+  animation: heroFadeUp var(--duration-slow) var(--ease-out) both;
+  animation-delay: 0.1s;
+}
+
+.hero__heading {
+  font-size:      var(--text-5xl);
+  line-height:    var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+
+  animation: heroFadeUp var(--duration-slow) var(--ease-out) both;
+  animation-delay: 0.2s;
+}
+
+/* TODO: Highlight a word or phrase in your heading */
+.hero__heading em {
+  font-style: italic;
+  color:      var(--color-action-primary);
+}
+
+.hero__subheading {
+  font-size:    var(--text-xl);
+  font-weight:  var(--weight-regular);
+  line-height:  var(--leading-relaxed);
+  color:        var(--color-text-secondary);
+  max-width:    54ch;
+
+  animation: heroFadeUp var(--duration-slow) var(--ease-out) both;
+  animation-delay: 0.35s;
+}
+
+.hero__actions {
+  display:    flex;
+  flex-wrap:  wrap;
+  gap:        var(--space-4);
+  margin-top: var(--space-2);
+
+  animation: heroFadeUp var(--duration-slow) var(--ease-out) both;
+  animation-delay: 0.5s;
+}
+
+/* Scroll indicator */
+.hero__scroll {
+  position:   absolute;
+  bottom:     var(--space-8);
+  left:       50%;
+  transform:  translateX(-50%);
+  display:    flex;
+  flex-direction: column;
+  align-items: center;
+  gap:        var(--space-2);
+  color:      var(--color-text-tertiary);
+  font-family: var(--font-mono);
+  font-size:  var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+
+  animation: heroFadeUp var(--duration-slow) var(--ease-out) both;
+  animation-delay: 0.8s;
+}
+
+.hero__scroll-line {
+  width:      1px;
+  height:     48px;
+  background: linear-gradient(to bottom, var(--color-text-tertiary), transparent);
+  animation:  scrollBounce 2s var(--ease-default) infinite;
+}
+
+/* ── Modifiers ── */
+
+/* Centered hero variant */
+.hero--centered {
+  --hero-text-align: center;
+}
+
+.hero--centered .hero__inner {
+  max-width: 780px;
+  margin-inline: auto;
+  align-items: center;
+}
+
+.hero--centered .hero__actions {
+  justify-content: center;
+}
+
+/* Full-height variant */
+.hero--full {
+  --hero-min-height: 100svh;
+}
+
+
+/* ── Animations ── */
+
+@keyframes heroFadeUp {
+  from {
+    opacity:   0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity:   1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero__eyebrow,
+  .hero__heading,
+  .hero__subheading,
+  .hero__actions,
+  .hero__scroll {
+    animation: none;
+  }
+
+  .hero__scroll-line {
+    animation: none;
+  }
+}
